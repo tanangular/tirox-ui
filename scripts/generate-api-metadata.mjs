@@ -36,7 +36,6 @@ const presetExports = [
 );
 const outputPath = join(root, 'docs/api-metadata.json');
 const metadata = {
-  generatedAt: new Date().toISOString(),
   packages: [
     { name: '@tirox-ui/solid', source: 'packages/solid/src/index.ts', components },
     {
