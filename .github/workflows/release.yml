@@ -20,11 +20,30 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
           package-manager-cache: false
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter @tirox-ui/docs exec playwright install --with-deps chromium firefox webkit
       - run: pnpm release:check
-      - run: pnpm release
+
+      - name: Publish @tirox-ui/preset
+        working-directory: packages/preset
+        run: |
+          version=$(node -p "require('./package.json').version")
+          if npm view "@tirox-ui/preset@$version" version >/dev/null 2>&1; then
+            echo "@tirox-ui/preset@$version is already published"
+          else
+            npm publish --provenance --access public
+          fi
+
+      - name: Publish @tirox-ui/solid
+        working-directory: packages/solid
+        run: |
+          version=$(node -p "require('./package.json').version")
+          if npm view "@tirox-ui/solid@$version" version >/dev/null 2>&1; then
+            echo "@tirox-ui/solid@$version is already published"
+          else
+            npm publish --provenance --access public
+          fi
