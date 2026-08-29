@@ -4,11 +4,18 @@ import { join } from 'node:path';
 const root = new URL('..', import.meta.url).pathname;
 const changesetDir = join(root, '.changeset');
 const validPackages = new Set(['@tirox-ui/solid', '@tirox-ui/preset']);
+const releaseMode = process.argv.includes('--release');
 const files = (await readdir(changesetDir)).filter(
   (file) => file.endsWith('.md') && file !== 'README.md',
 );
 
-if (!files.length) throw new Error('At least one Changeset is required before a package release.');
+if (!files.length) {
+  if (releaseMode) {
+    console.log('No pending Changesets; release candidate has already been versioned.');
+    process.exit(0);
+  }
+  throw new Error('At least one Changeset is required before a package release.');
+}
 
 for (const file of files) {
   const source = await readFile(join(changesetDir, file), 'utf8');

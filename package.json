@@ -23,7 +23,7 @@
     "zag:spike": "pnpm --filter @tirox-ui/solid exec node scripts/probe-zag-solid2.mjs",
     "contract:check": "node scripts/check-public-contract.mjs",
     "foundation:check": "node scripts/generate-api-metadata.mjs && node scripts/check-foundation-acceptance.mjs",
-    "release:check": "pnpm lint && pnpm format:check && pnpm check && pnpm test && pnpm build && pnpm foundation:check && pnpm contract:check && pnpm runtime:boundary:check && pnpm telemetry:check && pnpm licenses:check && pnpm pack:check && pnpm changesets:check && pnpm security:headers:check && pnpm performance:check && pnpm test:e2e && pnpm test:e2e:enforce && pnpm security:check && pnpm security:review && changeset status",
+    "release:check": "pnpm lint && pnpm format:check && pnpm check && pnpm test && pnpm build && pnpm foundation:check && pnpm contract:check && pnpm runtime:boundary:check && pnpm telemetry:check && pnpm licenses:check && pnpm pack:check && node scripts/check-changesets.mjs --release && pnpm security:headers:check && pnpm performance:check && pnpm test:e2e && pnpm test:e2e:enforce && pnpm security:check && pnpm security:review",
     "changeset": "changeset",
     "release": "changeset publish"
   },
