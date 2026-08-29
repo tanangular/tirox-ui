@@ -38,7 +38,8 @@
     }
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "build": "node ../../scripts/clean-dist.mjs dist && tsc -p tsconfig.build.json",
@@ -51,5 +52,9 @@
   },
   "devDependencies": {
     "vitest": "^4.1.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tanangular/tirox-ui.git"
   }
 }
