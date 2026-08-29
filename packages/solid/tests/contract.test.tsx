@@ -68,6 +68,14 @@ describe('Button contract', () => {
     expect(button.hasAttribute('data-loading')).toBe(true);
     expect(button.getAttribute('aria-busy')).toBe('true');
   });
+
+  it('exposes disabled state while preserving native button behavior', () => {
+    const { getByRole } = render(() => <Button disabled>Save</Button>);
+    const button = getByRole('button', { name: 'Save' });
+    expect((button as HTMLButtonElement).disabled).toBe(true);
+    expect(button.getAttribute('data-state')).toBe('disabled');
+    expect(button.getAttribute('data-disabled')).toBe('');
+  });
 });
 
 describe('Input contract', () => {
@@ -84,6 +92,14 @@ describe('Input contract', () => {
   it('preserves an explicit consumer id', () => {
     const { getByRole } = render(() => <Input id="account-email" aria-label="Email" />);
     expect(getByRole('textbox', { name: 'Email' }).id).toBe('account-email');
+  });
+
+  it('exposes disabled state while preserving native input behavior', () => {
+    const { getByRole } = render(() => <Input aria-label="Email" disabled />);
+    const input = getByRole('textbox', { name: 'Email' });
+    expect((input as HTMLInputElement).disabled).toBe(true);
+    expect(input.getAttribute('data-state')).toBe('disabled');
+    expect(input.getAttribute('data-disabled')).toBe('');
   });
 });
 
@@ -126,6 +142,17 @@ describe('Checkbox contract', () => {
     expect(changes).toEqual([true]);
     expect((checkbox as HTMLInputElement).checked).toBe(true);
     expect(checkbox.parentElement?.getAttribute('data-state')).toBe('checked');
+  });
+
+  it('exposes disabled state while preserving the hidden native input', () => {
+    const { getByRole } = render(() => (
+      <Checkbox.Root aria-label="Accept terms" disabled>
+        <Checkbox.Control />
+      </Checkbox.Root>
+    ));
+    const checkbox = getByRole('checkbox', { name: 'Accept terms' });
+    expect((checkbox as HTMLInputElement).disabled).toBe(true);
+    expect(checkbox.parentElement?.getAttribute('data-disabled')).toBe('');
   });
 });
 
@@ -171,6 +198,17 @@ describe('Select contract', () => {
     expect(select.value).toBe('jp');
     expect(select.getAttribute('data-value')).toBe('jp');
   });
+
+  it('exposes disabled state without replacing native select semantics', () => {
+    const { getByRole } = render(() => (
+      <Select.Root aria-label="Country" disabled>
+        <Select.Item value="th">Thailand</Select.Item>
+      </Select.Root>
+    ));
+    const select = getByRole('combobox', { name: 'Country' });
+    expect((select as HTMLSelectElement).disabled).toBe(true);
+    expect(select.getAttribute('data-disabled')).toBe('');
+  });
 });
 
 describe('Dialog contract', () => {
@@ -191,6 +229,8 @@ describe('Dialog contract', () => {
     expect(dialog.id).toMatch(/^cl-/);
     expect(dialog.hasAttribute('open')).toBe(true);
     expect(dialog.getAttribute('data-state')).toBe('open');
+    expect(dialog.getAttribute('aria-labelledby')).toBe(`${dialog.id}-title`);
+    expect(dialog.getAttribute('aria-describedby')).toBe(`${dialog.id}-description`);
     expect(getByRole('heading', { name: 'Preferences' })).toBeTruthy();
   });
 
@@ -208,6 +248,21 @@ describe('Dialog contract', () => {
     ));
     expect(container.querySelector('[data-part="content"]')).toBeTruthy();
     container.remove();
+  });
+
+  it('preserves an explicit root id for content and ARIA relationships', () => {
+    const { getByRole } = render(() => (
+      <Dialog.Root id="settings-dialog" defaultOpen>
+        <Dialog.Content>
+          <Dialog.Title>Settings</Dialog.Title>
+          <Dialog.Description>Manage settings</Dialog.Description>
+        </Dialog.Content>
+      </Dialog.Root>
+    ));
+    const dialog = getByRole('dialog');
+    expect(dialog.id).toBe('settings-dialog');
+    expect(dialog.getAttribute('aria-labelledby')).toBe('settings-dialog-title');
+    expect(dialog.getAttribute('aria-describedby')).toBe('settings-dialog-description');
   });
 
   it('connects trigger and close parts to uncontrolled open state', () => {
@@ -229,6 +284,22 @@ describe('Dialog contract', () => {
     fireEvent.click(view.getByRole('button', { name: 'Close' }));
     flush();
     expect(dialog.getAttribute('data-state')).toBe('closed');
+  });
+
+  it('does not open from a disabled trigger', () => {
+    const view = render(() => (
+      <Dialog.Root>
+        <Dialog.Trigger disabled>Open preferences</Dialog.Trigger>
+        <Dialog.Content>
+          <Dialog.Title>Preferences</Dialog.Title>
+        </Dialog.Content>
+      </Dialog.Root>
+    ));
+    const trigger = view.getByRole('button', { name: 'Open preferences' });
+    fireEvent.click(trigger);
+    flush();
+    expect(trigger.getAttribute('data-disabled')).toBe('');
+    expect(view.getByRole('dialog', { hidden: true }).hasAttribute('open')).toBe(false);
   });
 });
 
@@ -264,5 +335,19 @@ describe('Tooltip contract', () => {
     expect(content.hasAttribute('hidden')).toBe(false);
     expect(content.getAttribute('data-state')).toBe('open');
     expect(view.getByRole('tooltip', { name: 'Helpful information' })).toBe(content);
+  });
+
+  it('does not open from pointer interaction when the trigger is disabled', () => {
+    const view = render(() => (
+      <Tooltip.Root>
+        <Tooltip.Trigger disabled>Help</Tooltip.Trigger>
+        <Tooltip.Content>Helpful information</Tooltip.Content>
+      </Tooltip.Root>
+    ));
+    const trigger = view.getByRole('button', { name: 'Help' });
+    fireEvent.mouseEnter(trigger);
+    flush();
+    expect(trigger.getAttribute('data-disabled')).toBe('');
+    expect(view.getByRole('tooltip', { hidden: true }).hasAttribute('hidden')).toBe(true);
   });
 });

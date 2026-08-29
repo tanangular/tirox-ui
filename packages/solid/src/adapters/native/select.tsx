@@ -35,6 +35,7 @@ function Root(props: SelectRootProps) {
       data-scope="select"
       data-part="root"
       data-value={selectedValue()}
+      data-disabled={props.disabled ? '' : undefined}
       onChange={handleChange}
     >
       {children}

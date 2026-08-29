@@ -24,9 +24,15 @@ jobs:
       - run: pnpm performance:check
       - run: pnpm security:check
       - run: pnpm security:headers:check
+      - run: pnpm runtime:boundary:check
+      - run: pnpm telemetry:check
+      - run: pnpm licenses:check
+      - run: pnpm pack:check
+      - run: pnpm changesets:check
       - run: pnpm security:review
       - run: pnpm changeset status
       - run: pnpm --filter @tirox-ui/docs build
       - run: pnpm exec playwright install --with-deps chromium firefox webkit
       - run: pnpm test:e2e
+      - run: pnpm test:e2e:enforce
       - run: pnpm audit --audit-level high

@@ -5,7 +5,6 @@ coverage/
 playwright-report/
 test-results/
 styled-system/
-.changeset/*.md
-!.changeset/README.md
+performance/latest.json
 .DS_Store
 .idea/

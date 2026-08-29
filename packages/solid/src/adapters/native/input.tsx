@@ -10,10 +10,11 @@ export function NativeInput(props: InputProps) {
       id={id}
       class={className}
       aria-invalid={invalid ? 'true' : undefined}
-      data-state={invalid ? 'invalid' : 'valid'}
+      data-state={invalid ? 'invalid' : props.disabled ? 'disabled' : 'valid'}
       data-scope="input"
       data-part="root"
       data-invalid={invalid ? '' : undefined}
+      data-disabled={props.disabled ? '' : undefined}
     />
   );
 }

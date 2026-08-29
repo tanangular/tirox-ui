@@ -31,6 +31,7 @@ function Root(props: CheckboxRootProps) {
       data-scope="checkbox"
       data-part="root"
       data-state={isChecked() ? 'checked' : 'unchecked'}
+      data-disabled={props.disabled ? '' : undefined}
     >
       <input
         id={id}

@@ -1,7 +1,9 @@
 ---
-import { primitiveTokens, slotRecipes } from '@tirox-ui/preset';
+import { createThemeCssVariables, primitiveTokens, slotRecipes } from '@tirox-ui/preset';
 import apiMetadata from '../../../../docs/api-metadata.json';
 import customPresetSource from '../../../../docs/preset/custom-preset.ts?raw';
+
+const themeCssVariables = createThemeCssVariables();
 ---
 <html lang="en" data-theme="light">
   <head>
@@ -46,24 +48,16 @@ import customPresetSource from '../../../../docs/preset/custom-preset.ts?raw';
       <p>Generated from Solid and preset TypeScript source and reviewed with behavior guidance.</p>
       <pre>{JSON.stringify(apiMetadata, null, 2)}</pre>
     </main>
-    <script>
-      const picker = document.querySelector('#theme-picker');
-      const resolveTheme = (mode) => mode === 'system'
-        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-        : mode;
-      picker?.addEventListener('change', (event) => {
-        document.documentElement.dataset.theme = resolveTheme(event.currentTarget.value);
-      });
-    </script>
+    <script src="/theme-playground.js" is:inline></script>
   </body>
   <style>
     :global(html) { color-scheme: light; }
     :global(html[data-theme='dark']) { color-scheme: dark; }
-    body { margin: 0; font-family: system-ui, sans-serif; background: #fcfcfd; color: #1f2024; }
+    body { margin: 0; font-family: system-ui, sans-serif; background: var(--tx-color-surface-default); color: var(--tx-color-text-default); }
     main { max-width: 60rem; margin: 0 auto; padding: 3rem 1.5rem; }
     button, select { font: inherit; padding: 0.5rem 0.75rem; }
     pre { overflow: auto; background: #f0f0f3; padding: 1rem; }
-    html[data-theme='dark'] body { background: #1f2024; color: #fcfcfd; }
     html[data-theme='dark'] pre { background: #62636c; }
   </style>
 </html>
+<style is:global set:html={themeCssVariables}></style>

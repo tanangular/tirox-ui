@@ -81,18 +81,22 @@ function Trigger(props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) {
   const context = useContext(TooltipContext);
   const describedBy = props['aria-describedby'] ?? context?.contentId;
   const handleEnter: JSX.EventHandler<HTMLButtonElement, MouseEvent> = (event) => {
+    if (props.disabled) return;
     (props.onMouseEnter as unknown as ((event: MouseEvent) => void) | undefined)?.(event);
     context?.setOpen(true);
   };
   const handleLeave: JSX.EventHandler<HTMLButtonElement, MouseEvent> = (event) => {
+    if (props.disabled) return;
     (props.onMouseLeave as unknown as ((event: MouseEvent) => void) | undefined)?.(event);
     context?.setOpen(false);
   };
   const handleFocus: JSX.EventHandler<HTMLButtonElement, FocusEvent> = (event) => {
+    if (props.disabled) return;
     (props.onFocus as unknown as ((event: FocusEvent) => void) | undefined)?.(event);
     context?.setOpen(true);
   };
   const handleBlur: JSX.EventHandler<HTMLButtonElement, FocusEvent> = (event) => {
+    if (props.disabled) return;
     (props.onBlur as unknown as ((event: FocusEvent) => void) | undefined)?.(event);
     context?.setOpen(false);
   };
@@ -103,6 +107,7 @@ function Trigger(props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) {
       aria-describedby={describedBy}
       data-scope="tooltip"
       data-part="trigger"
+      data-disabled={props.disabled ? '' : undefined}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
       onFocus={handleFocus}

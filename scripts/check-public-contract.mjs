@@ -22,10 +22,20 @@ for (const [packagePath, packageManifest] of [
     }
   }
 }
-if (
-  Object.keys(manifest.exports).some((entry) => entry.includes('src') || entry.includes('internal'))
-) {
-  throw new Error('Internal paths must not be public exports.');
+for (const packageManifest of [manifest, presetManifest]) {
+  if (
+    Object.keys(packageManifest.exports).some(
+      (entry) => entry.includes('src') || entry.includes('internal'),
+    )
+  ) {
+    throw new Error('Internal paths must not be public exports.');
+  }
+  if (packageManifest.sideEffects !== false) {
+    throw new Error(`${packageManifest.name} must declare sideEffects: false for tree-shaking.`);
+  }
+  if (packageManifest.publishConfig?.access !== 'public') {
+    throw new Error(`${packageManifest.name} must declare public publish access.`);
+  }
 }
 const matrix = readFileSync(join(root, 'docs/compatibility.md'), 'utf8');
 for (const required of ['Solid runtime', 'TypeScript', 'Chromium / Firefox / WebKit']) {

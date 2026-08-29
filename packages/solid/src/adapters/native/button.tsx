@@ -20,7 +20,8 @@ export function NativeButton(props: ButtonProps) {
       data-part="root"
       data-variant={variant}
       data-size={size}
-      data-state={loading ? 'loading' : 'idle'}
+      data-state={loading ? 'loading' : props.disabled ? 'disabled' : 'idle'}
+      data-disabled={props.disabled ? '' : undefined}
       data-loading={loading ? '' : undefined}
     >
       {children}

@@ -12,6 +12,8 @@ import type { DialogPortalProps, DialogRootProps } from '../../contracts/dialog'
 
 interface DialogContextValue {
   id: string;
+  titleId: string;
+  descriptionId: string;
   open: () => boolean;
   setOpen: (open: boolean) => void;
 }
@@ -59,7 +61,13 @@ function Root(props: DialogRootProps) {
   };
 
   return createComponent(DialogContext, {
-    value: { id, open: isOpen, setOpen },
+    value: {
+      id,
+      titleId: `${id}-title`,
+      descriptionId: `${id}-description`,
+      open: isOpen,
+      setOpen,
+    },
     get children() {
       return (
         <DialogTree class={className} native={native}>
@@ -73,6 +81,7 @@ function Root(props: DialogRootProps) {
 function Trigger(props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) {
   const context = useContext(DialogContext);
   const handleClick: JSX.EventHandler<HTMLButtonElement, MouseEvent> = (event) => {
+    if (props.disabled) return;
     (props.onClick as unknown as ((event: MouseEvent) => void) | undefined)?.(event);
     context?.setOpen(!context.open());
   };
@@ -84,6 +93,7 @@ function Trigger(props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) {
       data-part="trigger"
       aria-controls={context?.id}
       aria-expanded={context?.open() ? 'true' : 'false'}
+      data-disabled={props.disabled ? '' : undefined}
       onClick={handleClick}
     />
   );
@@ -100,6 +110,8 @@ function Content(props: JSX.DialogHtmlAttributes<HTMLDialogElement>) {
       {...props}
       id={context?.id ?? props.id ?? createUniqueId()}
       open={context?.open()}
+      aria-labelledby={props['aria-labelledby'] ?? context?.titleId}
+      aria-describedby={props['aria-describedby'] ?? context?.descriptionId}
       data-scope="dialog"
       data-part="content"
       data-state={context?.open() ? 'open' : 'closed'}
@@ -109,11 +121,27 @@ function Content(props: JSX.DialogHtmlAttributes<HTMLDialogElement>) {
 }
 
 function Title(props: JSX.HTMLAttributes<HTMLHeadingElement>) {
-  return <h2 {...props} data-scope="dialog" data-part="title" />;
+  const context = useContext(DialogContext);
+  return (
+    <h2
+      {...props}
+      id={props.id ?? context?.titleId ?? createUniqueId()}
+      data-scope="dialog"
+      data-part="title"
+    />
+  );
 }
 
 function Description(props: JSX.HTMLAttributes<HTMLParagraphElement>) {
-  return <p {...props} data-scope="dialog" data-part="description" />;
+  const context = useContext(DialogContext);
+  return (
+    <p
+      {...props}
+      id={props.id ?? context?.descriptionId ?? createUniqueId()}
+      data-scope="dialog"
+      data-part="description"
+    />
+  );
 }
 
 function Close(props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) {

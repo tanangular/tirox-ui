@@ -6,6 +6,7 @@
     "dist"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -36,8 +37,12 @@
       "import": "./dist/theme.js"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "node ../../scripts/clean-dist.mjs dist && tsc -p tsconfig.build.json",
+    "prepublishOnly": "pnpm build",
     "check": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run"
   },

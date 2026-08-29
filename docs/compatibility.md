@@ -22,6 +22,12 @@ the pinned Solid 2 RC. Docs therefore use the static executable contract
 surface until the integration publishes a compatible release; enabling it
 requires a fresh build and hydration review.
 
+SolidStart integration is an application-level verification boundary. The
+package provides Solid SSR and deterministic hydration primitives, while
+SolidStart server functions, queries, actions, authorization, and data
+serialization remain consumer-owned; see
+[`docs/architecture/solidstart-integration.md`](architecture/solidstart-integration.md).
+
 The public contract check also verifies all six explicit component exports and rejects internal source paths.
 
 The v1 package does not install Ark UI as a runtime dependency. The Ark UI Solid adapter currently imports the legacy `solid-js/web` subpath, so it remains an experimental future adapter until a compatible release is available. The v1 native adapter keeps the package and docs compatible with `@solidjs/web` 2.0.0-rc.3.
