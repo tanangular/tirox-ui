@@ -23,10 +23,12 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
+      - run: pnpm build
       - run: pnpm --filter @tirox-ui/docs exec playwright install --with-deps chromium firefox webkit
       - run: pnpm --filter @tirox-ui/docs exec playwright test tests/accessibility.spec.ts --project=chromium --project=firefox --project=webkit --update-snapshots
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: visual-baselines-linux
           path: apps/docs/tests/accessibility.spec.ts-snapshots/*-linux.png
