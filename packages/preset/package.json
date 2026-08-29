@@ -1,0 +1,50 @@
+{
+  "name": "@tirox-ui/preset",
+  "version": "0.1.0-alpha.0",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens": {
+      "types": "./dist/tokens.d.ts",
+      "import": "./dist/tokens.js"
+    },
+    "./recipes": {
+      "types": "./dist/recipes.d.ts",
+      "import": "./dist/recipes.js"
+    },
+    "./panda": {
+      "types": "./dist/panda.d.ts",
+      "import": "./dist/panda.js"
+    },
+    "./conformance": {
+      "types": "./dist/conformance.d.ts",
+      "import": "./dist/conformance.js"
+    },
+    "./contrast": {
+      "types": "./dist/contrast.d.ts",
+      "import": "./dist/contrast.js"
+    },
+    "./theme": {
+      "types": "./dist/theme.d.ts",
+      "import": "./dist/theme.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@pandacss/dev": "^1.12.0"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.11"
+  }
+}

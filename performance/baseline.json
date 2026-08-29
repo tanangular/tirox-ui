@@ -1,0 +1,15 @@
+{
+  "source": "pnpm build on the foundation baseline",
+  "bundleBytes": {
+    "button.js": 71,
+    "input.js": 69,
+    "checkbox.js": 75,
+    "select.js": 71,
+    "dialog.js": 71,
+    "tooltip.js": 73,
+    "index.js": 1962
+  },
+  "regressionLimit": 0.1,
+  "absoluteBundleLimit": 8000,
+  "policy": "warn-in-development-block-in-CI-or-critical-release"
+}

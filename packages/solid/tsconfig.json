@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src", "tests", "vite.config.ts", "vitest.config.ts"],
+  "compilerOptions": {
+    "paths": {
+      "@tirox-ui/preset": ["../../packages/preset/src/index.ts"],
+      "@tirox-ui/solid": ["./src/index.ts"]
+    }
+  }
+}

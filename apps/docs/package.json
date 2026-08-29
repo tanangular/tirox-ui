@@ -1,0 +1,25 @@
+{
+  "name": "@tirox-ui/docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "check:astro": "astro check",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@solidjs/web": "2.0.0-rc.3",
+    "@tirox-ui/preset": "workspace:*",
+    "@tirox-ui/solid": "workspace:*",
+    "astro": "^7.2.9",
+    "cookie": "2.0.1",
+    "solid-js": "2.0.0-rc.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.62.1"
+  }
+}

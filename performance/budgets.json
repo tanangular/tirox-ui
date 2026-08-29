@@ -1,0 +1,13 @@
+{
+  "status": "baseline-required",
+  "policy": "warn-in-development-block-in-release-or-critical-change",
+  "measure": [
+    "bundle-size",
+    "generated-css-size",
+    "ssr-hydration",
+    "interaction-latency",
+    "docs-lcp-inp-cls"
+  ],
+  "absolute": {},
+  "regression": {}
+}

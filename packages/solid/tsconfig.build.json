@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "src",
+    "paths": { "@tirox-ui/preset": ["../preset/dist/index.d.ts"] }
+  },
+  "include": ["src"]
+}

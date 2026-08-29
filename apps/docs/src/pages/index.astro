@@ -1,0 +1,69 @@
+---
+import { primitiveTokens, slotRecipes } from '@tirox-ui/preset';
+import apiMetadata from '../../../../docs/api-metadata.json';
+import customPresetSource from '../../../../docs/preset/custom-preset.ts?raw';
+---
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Tirox UI executable documentation" />
+    <title>Tirox UI</title>
+  </head>
+  <body>
+    <main>
+      <h1>Tirox UI</h1>
+      <p>Solid-native, accessible components with a replaceable Panda token contract.</p>
+      <p><a href="/components">Read the foundation behavior guidance</a></p>
+      <button data-scope="button" data-part="root" data-variant="solid" data-size="md">Get started</button>
+      <h2>Button</h2>
+      <p>Contract: native button props, typed <code>variant</code>/<code>size</code>, loading state, and stable semantic attributes.</p>
+      <pre><code>{`import { Button } from '@tirox-ui/solid';\n\n&lt;Button variant="solid" size="md"&gt;Get started&lt;/Button&gt;`}</code></pre>
+      <p>Interactive behavior uses the Solid 2-compatible native adapter while Ark and other behavior adapters remain behind their compatibility gates.</p>
+      <h2>Input</h2>
+      <p>Input keeps native events and props, generates an SSR-safe id when needed, and exposes <code>aria-invalid</code> plus <code>data-invalid</code>.</p>
+      <pre><code>{`import { Input } from '@tirox-ui/solid';\n\n&lt;Input aria-label="Email" invalid /&gt;`}</code></pre>
+      <h2>Checkbox</h2>
+      <p>Checkbox preserves the compound namespace shape and native checkbox semantics while alternate behavior adapters remain experimental.</p>
+      <pre><code>{`import { Checkbox } from '@tirox-ui/solid';\n\n&lt;Checkbox.Root defaultChecked&gt;\n  &lt;Checkbox.Control&gt;&lt;Checkbox.Indicator /&gt;&lt;/Checkbox.Control&gt;\n&lt;/Checkbox.Root&gt;`}</code></pre>
+      <h2>Select</h2>
+      <p>Select keeps native keyboard, form, and change-event behavior while exposing the typed Tirox namespace contract.</p>
+      <pre><code>{`import { Select } from '@tirox-ui/solid';\n\n&lt;Select.Root aria-label="Country" defaultValue="th"&gt;\n  &lt;Select.Item value="th"&gt;Thailand&lt;/Select.Item&gt;\n&lt;/Select.Root&gt;`}</code></pre>
+      <h2>Dialog</h2>
+      <p>Dialog uses the native dialog element for SSR-safe markup, focus-friendly browser semantics, explicit open state, and typed compound anatomy.</p>
+      <pre><code>{`import { Dialog } from '@tirox-ui/solid';\n\n&lt;Dialog.Root defaultOpen&gt;\n  &lt;Dialog.Content&gt;\n    &lt;Dialog.Title&gt;Preferences&lt;/Dialog.Title&gt;\n    &lt;Dialog.Close&gt;Close&lt;/Dialog.Close&gt;\n  &lt;/Dialog.Content&gt;\n&lt;/Dialog.Root&gt;`}</code></pre>
+      <h2>Tooltip</h2>
+      <p>Tooltip exposes hover/focus lifecycle, a stable tooltip role, and a compound namespace with explicit content anatomy.</p>
+      <pre><code>{`import { Tooltip } from '@tirox-ui/solid';\n\n&lt;Tooltip.Root defaultOpen&gt;\n  &lt;Tooltip.Trigger&gt;Help&lt;/Tooltip.Trigger&gt;\n  &lt;Tooltip.Content&gt;Helpful information&lt;/Tooltip.Content&gt;\n&lt;/Tooltip.Root&gt;`}</code></pre>
+      <pre>{JSON.stringify({ components: ['Button', 'Input', 'Checkbox', 'Select', 'Dialog', 'Tooltip'], recipe: slotRecipes.button, tokenGroups: Object.keys(primitiveTokens) }, null, 2)}</pre>
+      <h2>Theme playground</h2>
+      <p>Theme selection is root-scoped and does not require component changes.</p>
+      <label>Theme <select id="theme-picker"><option value="light">Light</option><option value="dark">Dark</option><option value="system">System</option></select></label>
+      <h2>Custom preset example</h2>
+      <p>Consumers can replace semantic values while keeping the shared conformance contract.</p>
+      <pre id="custom-preset-source"><code>{customPresetSource}</code></pre>
+      <h2>API metadata</h2>
+      <p>Generated from Solid and preset TypeScript source and reviewed with behavior guidance.</p>
+      <pre>{JSON.stringify(apiMetadata, null, 2)}</pre>
+    </main>
+    <script>
+      const picker = document.querySelector('#theme-picker');
+      const resolveTheme = (mode) => mode === 'system'
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : mode;
+      picker?.addEventListener('change', (event) => {
+        document.documentElement.dataset.theme = resolveTheme(event.currentTarget.value);
+      });
+    </script>
+  </body>
+  <style>
+    :global(html) { color-scheme: light; }
+    :global(html[data-theme='dark']) { color-scheme: dark; }
+    body { margin: 0; font-family: system-ui, sans-serif; background: #fcfcfd; color: #1f2024; }
+    main { max-width: 60rem; margin: 0 auto; padding: 3rem 1.5rem; }
+    button, select { font: inherit; padding: 0.5rem 0.75rem; }
+    pre { overflow: auto; background: #f0f0f3; padding: 1rem; }
+    html[data-theme='dark'] body { background: #1f2024; color: #fcfcfd; }
+    html[data-theme='dark'] pre { background: #62636c; }
+  </style>
+</html>

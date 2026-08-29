@@ -1,0 +1,22 @@
+{
+  "measuredAt": "2026-08-29T12:02:08.702Z",
+  "bundleBytes": {
+    "button-DIswm53I.js": 613,
+    "button.js": 71,
+    "checkbox-NiQPoNtx.js": 1933,
+    "checkbox.js": 75,
+    "dialog-DNN1OF-Q.js": 2682,
+    "dialog.js": 71,
+    "index.js": 1962,
+    "input-DLyol-xF.js": 549,
+    "input.js": 69,
+    "select-vEELqc5d.js": 1509,
+    "select.js": 71,
+    "tooltip-Dkj018Ub.js": 2453,
+    "tooltip.js": 73
+  },
+  "regressionLimit": 0.1,
+  "absoluteBundleLimit": 8000,
+  "violations": [],
+  "absoluteViolations": []
+}

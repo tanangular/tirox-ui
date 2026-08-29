@@ -1,0 +1,62 @@
+{
+  "name": "@tirox-ui/solid",
+  "version": "0.1.0-alpha.0",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./button": {
+      "types": "./dist/button.d.ts",
+      "import": "./dist/button.js"
+    },
+    "./input": {
+      "types": "./dist/input.d.ts",
+      "import": "./dist/input.js"
+    },
+    "./checkbox": {
+      "types": "./dist/checkbox.d.ts",
+      "import": "./dist/checkbox.js"
+    },
+    "./select": {
+      "types": "./dist/select.d.ts",
+      "import": "./dist/select.js"
+    },
+    "./dialog": {
+      "types": "./dist/dialog.d.ts",
+      "import": "./dist/dialog.js"
+    },
+    "./tooltip": {
+      "types": "./dist/tooltip.d.ts",
+      "import": "./dist/tooltip.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.build.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --config vitest.config.ts && vitest run --config vitest.ssr.config.ts"
+  },
+  "devDependencies": {
+    "@kobalte/core": "0.13.13",
+    "@solidjs/diagnostics": "2.0.0-rc.3",
+    "@solidjs/testing-library": "1.0.0-beta.2",
+    "@solidjs/vite-plugin": "3.0.0-next.34",
+    "@solidjs/web": "2.0.0-rc.3",
+    "@tirox-ui/preset": "workspace:*",
+    "@zag-js/checkbox": "1.43.3",
+    "@zag-js/dialog": "1.43.3",
+    "@zag-js/solid": "1.43.3",
+    "jsdom": "^30.0.1",
+    "solid-js": "2.0.0-rc.3",
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11"
+  },
+  "peerDependencies": {
+    "solid-js": ">=2.0.0-rc.3 <3"
+  }
+}

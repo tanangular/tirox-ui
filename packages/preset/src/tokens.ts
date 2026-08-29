@@ -1,0 +1,80 @@
+export const primitiveTokens = {
+  colors: {
+    gray: {
+      1: '#fcfcfd',
+      2: '#f9f9fb',
+      3: '#f0f0f3',
+      4: '#e8e8ec',
+      5: '#e0e1e6',
+      6: '#d9d9e0',
+      7: '#ceced8',
+      8: '#b9b9c8',
+      9: '#8b8d98',
+      10: '#80818b',
+      11: '#62636c',
+      12: '#1f2024',
+    },
+    blue: {
+      1: '#fbfdff',
+      2: '#f4faff',
+      3: '#e6f4fe',
+      4: '#d5efff',
+      5: '#c2e5ff',
+      6: '#acd8fc',
+      7: '#91c8f6',
+      8: '#74b0ec',
+      9: '#0090ff',
+      10: '#0585e5',
+      11: '#0d74ce',
+      12: '#113264',
+    },
+    red: {
+      1: '#fffcfc',
+      2: '#fff8f8',
+      3: '#ffebec',
+      4: '#ffdbdc',
+      5: '#ffcdce',
+      6: '#fdbdbe',
+      7: '#f5a9aa',
+      8: '#eb8e90',
+      9: '#e5484d',
+      10: '#dc3e42',
+      11: '#ce2c31',
+      12: '#641723',
+    },
+  },
+  spacing: {
+    1: '0.25rem',
+    2: '0.5rem',
+    3: '0.75rem',
+    4: '1rem',
+    5: '1.25rem',
+    6: '1.5rem',
+    8: '2rem',
+    10: '2.5rem',
+  },
+  radii: { sm: '0.25rem', md: '0.5rem', lg: '0.75rem', full: '9999px' },
+  shadows: { sm: '0 1px 2px rgb(0 0 0 / 0.08)', md: '0 4px 12px rgb(0 0 0 / 0.12)' },
+  motion: { fast: '120ms', normal: '180ms', slow: '260ms', ease: 'cubic-bezier(0.2, 0, 0, 1)' },
+  layers: { base: 0, dropdown: 1000, dialog: 1100, toast: 1200, tooltip: 1300 },
+} as const;
+
+export const semanticTokens = {
+  colors: {
+    text: { default: '{colors.gray.12}', muted: '{colors.gray.11}', inverse: '{colors.gray.1}' },
+    surface: { default: '{colors.gray.1}', subtle: '{colors.gray.2}', elevated: '#ffffff' },
+    border: { default: '{colors.gray.6}', strong: '{colors.gray.8}' },
+    action: {
+      primary: '{colors.blue.11}',
+      primaryHover: '{colors.blue.12}',
+      danger: '{colors.red.9}',
+    },
+    focus: { ring: '{colors.blue.8}' },
+  },
+  shadows: { focus: '0 0 0 3px {colors.blue.5}' },
+} as const;
+
+export const themes = {
+  light: { surface: '{colors.gray.1}', text: '{colors.gray.12}' },
+  dark: { surface: '{colors.gray.12}', text: '{colors.gray.1}' },
+} as const;

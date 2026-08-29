@@ -1,0 +1,42 @@
+{
+  "name": "tirox-ui",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r --if-present build",
+    "check": "pnpm -r --if-present check",
+    "test": "pnpm -r --if-present test",
+    "test:e2e": "pnpm --filter @tirox-ui/docs test:e2e",
+    "lint": "oxlint .",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
+    "performance:check": "node scripts/measure-performance.mjs",
+    "api:metadata": "node scripts/generate-api-metadata.mjs",
+    "security:check": "node scripts/security-check.mjs && pnpm audit --audit-level high",
+    "security:headers:check": "node scripts/check-csp-mode.mjs",
+    "security:review": "node scripts/check-security-review.mjs",
+    "zag:spike": "pnpm --filter @tirox-ui/solid exec node scripts/probe-zag-solid2.mjs",
+    "contract:check": "node scripts/check-public-contract.mjs",
+    "foundation:check": "node scripts/generate-api-metadata.mjs && node scripts/check-foundation-acceptance.mjs",
+    "release:check": "pnpm lint && pnpm format:check && pnpm check && pnpm test && pnpm build && pnpm foundation:check && pnpm contract:check && pnpm performance:check && pnpm security:check && pnpm security:review && changeset status",
+    "changeset": "changeset",
+    "release": "changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^3.0.1",
+    "@solidjs/diagnostics": "2.0.0-rc.3",
+    "@solidjs/meta": "1.0.0-next.2",
+    "@solidjs/router": "2.0.0-next.18",
+    "@solidjs/testing-library": "1.0.0-beta.2",
+    "@solidjs/vite-plugin": "3.0.0-next.34",
+    "@solidjs/web": "2.0.0-rc.3",
+    "@types/node": "^24.0.0",
+    "oxfmt": "^0.65.0",
+    "oxlint": "~1.79.0",
+    "solid-js": "2.0.0-rc.3",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "packageManager": "pnpm@11.24.0"
+}

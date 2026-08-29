@@ -1,0 +1,172 @@
+{
+  "generatedAt": "2026-08-29T12:02:08.348Z",
+  "packages": [
+    {
+      "name": "@tirox-ui/solid",
+      "source": "packages/solid/src/index.ts",
+      "components": [
+        {
+          "name": "button",
+          "source": "packages/solid/src/button.tsx",
+          "interfaces": [
+            {
+              "name": "ButtonProps",
+              "props": ["variant", "size", "loading"]
+            }
+          ]
+        },
+        {
+          "name": "checkbox",
+          "source": "packages/solid/src/checkbox.tsx",
+          "interfaces": [
+            {
+              "name": "CheckboxRootProps",
+              "props": ["checked", "defaultChecked", "disabled", "onCheckedChange"]
+            }
+          ]
+        },
+        {
+          "name": "dialog",
+          "source": "packages/solid/src/dialog.tsx",
+          "interfaces": [
+            {
+              "name": "DialogRootProps",
+              "props": ["open", "defaultOpen", "onOpenChange", "id", "children"]
+            },
+            {
+              "name": "DialogPortalProps",
+              "props": ["container", "children"]
+            }
+          ]
+        },
+        {
+          "name": "input",
+          "source": "packages/solid/src/input.tsx",
+          "interfaces": [
+            {
+              "name": "InputProps",
+              "props": ["invalid"]
+            }
+          ]
+        },
+        {
+          "name": "select",
+          "source": "packages/solid/src/select.tsx",
+          "interfaces": [
+            {
+              "name": "SelectRootProps",
+              "props": ["defaultValue", "onValueChange"]
+            }
+          ]
+        },
+        {
+          "name": "tooltip",
+          "source": "packages/solid/src/tooltip.tsx",
+          "interfaces": [
+            {
+              "name": "TooltipRootProps",
+              "props": ["open", "defaultOpen", "onOpenChange", "children"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "@tirox-ui/preset",
+      "source": "packages/preset/src/index.ts",
+      "exports": [
+        "primitiveTokens",
+        "semanticTokens",
+        "themes",
+        "slotRecipes",
+        "ButtonSize",
+        "ButtonVariant",
+        "defineTiroxPandaConfig",
+        "tiroxPandaConfig",
+        "conformsToTiroxPreset",
+        "presetConformance",
+        "validatePresetConformance",
+        "PresetConformanceResult",
+        "TiroxPresetShape",
+        "contrastRatio",
+        "validateSemanticContrast",
+        "ContrastCheck",
+        "ContrastInput",
+        "createThemeCssVariables",
+        "defaultThemeVariables",
+        "resolveSystemTheme",
+        "resolveTheme",
+        "ResolvedTheme",
+        "ThemeMode",
+        "ThemeVariables"
+      ]
+    }
+  ],
+  "package": "@tirox-ui/solid",
+  "components": [
+    {
+      "name": "button",
+      "source": "packages/solid/src/button.tsx",
+      "interfaces": [
+        {
+          "name": "ButtonProps",
+          "props": ["variant", "size", "loading"]
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "source": "packages/solid/src/checkbox.tsx",
+      "interfaces": [
+        {
+          "name": "CheckboxRootProps",
+          "props": ["checked", "defaultChecked", "disabled", "onCheckedChange"]
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "source": "packages/solid/src/dialog.tsx",
+      "interfaces": [
+        {
+          "name": "DialogRootProps",
+          "props": ["open", "defaultOpen", "onOpenChange", "id", "children"]
+        },
+        {
+          "name": "DialogPortalProps",
+          "props": ["container", "children"]
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "source": "packages/solid/src/input.tsx",
+      "interfaces": [
+        {
+          "name": "InputProps",
+          "props": ["invalid"]
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "source": "packages/solid/src/select.tsx",
+      "interfaces": [
+        {
+          "name": "SelectRootProps",
+          "props": ["defaultValue", "onValueChange"]
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "source": "packages/solid/src/tooltip.tsx",
+      "interfaces": [
+        {
+          "name": "TooltipRootProps",
+          "props": ["open", "defaultOpen", "onOpenChange", "children"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+coverage/
+playwright-report/
+test-results/
+styled-system/
+.changeset/*.md
+!.changeset/README.md
+.DS_Store
+.idea/

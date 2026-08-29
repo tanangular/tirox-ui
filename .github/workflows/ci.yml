@@ -1,0 +1,32 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.24.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm format:check
+      - run: pnpm check
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm api:metadata
+      - run: pnpm contract:check
+      - run: pnpm foundation:check
+      - run: pnpm performance:check
+      - run: pnpm security:check
+      - run: pnpm security:headers:check
+      - run: pnpm security:review
+      - run: pnpm changeset status
+      - run: pnpm --filter @tirox-ui/docs build
+      - run: pnpm exec playwright install --with-deps chromium firefox webkit
+      - run: pnpm test:e2e
+      - run: pnpm audit --audit-level high
