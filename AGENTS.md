@@ -53,6 +53,8 @@ Deliver and release-gate this order: `Button → Input → Checkbox → Select �
 
 Develop component and docs as one vertical slice: write contract tests first, implement behavior and recipe, add executable docs, then run conformance, accessibility, SSR/hydration, visual, and type/API metadata checks. Examples consume workspace packages, never mocks.
 
+Every edited `*.mjs`, `*.js`, `*.ts`, `*.tsx`, or `*.jsx` file must be formatted with `oxfmt`. Run `oxfmt <edited-files>` after editing and `oxfmt --check .` before completing the task; formatting is a required CI gate.
+
 SolidStart integration tests are separate from package SSR tests and must cover server functions, queries/actions, serialization, and hydration without treating server data as authorization. Astro documentation may consume SSR-safe components, but its static build is not evidence of SolidStart server-function compatibility.
 
 CI gates are layered: every PR runs typecheck/lint/unit/SSR; component changes add accessibility/docs/contrast/visual checks; release or critical changes add exports, compatibility matrix, audit, provenance, and performance budgets. Benchmark before setting absolute and regression budgets; warn in development and block release/critical changes. Test latest and previous major Chromium, Firefox, and WebKit.

@@ -28,3 +28,4 @@ This is the compact current glossary. ADRs under `docs/adr` are historical recor
 - **Security boundary** — UI state is presentation only; authorization, secrets, sanitization ownership, and trust decisions remain with the application.
 - **Component/docs slice** — behavior and executable documentation change together and consume real workspace packages.
 - **Adapter conformance** — the requirement that every selectable adapter passes the same API, behavior, accessibility, SSR/hydration, visual, and cleanup vectors.
+- **Formatting contract** — every edited `*.mjs`, `*.js`, `*.ts`, `*.tsx`, or `*.jsx` file must pass `oxfmt`; `oxfmt --check .` is a completion and CI gate.

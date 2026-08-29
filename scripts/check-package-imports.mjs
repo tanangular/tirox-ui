@@ -8,9 +8,16 @@ const solidEntrypoint = new URL('packages/solid/dist/index.js', root);
 await import(pathToFileURL(presetEntrypoint.pathname));
 console.log(`Imported ${presetEntrypoint.pathname}`);
 
-execFileSync(process.execPath, ['--conditions=browser', '--input-type=module', '-e',
-  `await import(${JSON.stringify(pathToFileURL(solidEntrypoint.pathname).href)})`,
-], { stdio: 'inherit' });
+execFileSync(
+  process.execPath,
+  [
+    '--conditions=browser',
+    '--input-type=module',
+    '-e',
+    `await import(${JSON.stringify(pathToFileURL(solidEntrypoint.pathname).href)})`,
+  ],
+  { stdio: 'inherit' },
+);
 console.log(`Imported ${solidEntrypoint.pathname} with browser conditions`);
 
 console.log('Built package import checks passed.');
