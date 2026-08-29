@@ -18,8 +18,6 @@ This review is required before the first stable release. It must be re-opened wh
 - [x] Maintainer reviews portal/container and third-party origin boundaries.
 - [x] Maintainer signs release provenance and rollback procedure.
 
-Stable release is blocked until the remaining unchecked items are signed off and the status changes to `approved`.
-
 Reviewer: tanangular
 Reviewed on: 2026-08-29
-Reviewed commit: 9a0ebeeaf54dcedc123005ec947a7c1fddf333ff
+Reviewed commit: 6c38b105a56121ac38eb90399c0cf65b87810352
