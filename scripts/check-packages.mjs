@@ -14,4 +14,5 @@ for (const packageName of ['@tirox-ui/solid', '@tirox-ui/preset']) {
   });
 }
 
+await import('./check-package-imports.mjs');
 console.log('Publish artifact checks passed (dry-run only).');

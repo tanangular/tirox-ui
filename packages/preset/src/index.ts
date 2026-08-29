@@ -1,15 +1,15 @@
-export { primitiveTokens, semanticTokens, themes } from './tokens';
-export { slotRecipes } from './recipes';
-export type { ButtonSize, ButtonVariant } from './recipes';
-export { defineTiroxPandaConfig, tiroxPandaConfig } from './panda';
-export { conformsToTiroxPreset, presetConformance, validatePresetConformance } from './conformance';
-export type { PresetConformanceResult, TiroxPresetShape } from './conformance';
-export { contrastRatio, validateSemanticContrast } from './contrast';
-export type { ContrastCheck, ContrastInput } from './contrast';
+export { primitiveTokens, semanticTokens, themes } from './tokens.js';
+export { slotRecipes } from './recipes.js';
+export type { ButtonSize, ButtonVariant } from './recipes.js';
+export { defineTiroxPandaConfig, tiroxPandaConfig } from './panda.js';
+export { conformsToTiroxPreset, presetConformance, validatePresetConformance } from './conformance.js';
+export type { PresetConformanceResult, TiroxPresetShape } from './conformance.js';
+export { contrastRatio, validateSemanticContrast } from './contrast.js';
+export type { ContrastCheck, ContrastInput } from './contrast.js';
 export {
   createThemeCssVariables,
   defaultThemeVariables,
   resolveSystemTheme,
   resolveTheme,
-} from './theme';
-export type { ResolvedTheme, ThemeMode, ThemeVariables } from './theme';
+} from './theme.js';
+export type { ResolvedTheme, ThemeMode, ThemeVariables } from './theme.js';

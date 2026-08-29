@@ -1,6 +1,6 @@
 import { defineConfig } from '@pandacss/dev';
-import { primitiveTokens, semanticTokens } from './tokens';
-import { slotRecipes } from './recipes';
+import { primitiveTokens, semanticTokens } from './tokens.js';
+import { slotRecipes } from './recipes.js';
 
 export const tiroxPandaConfig = defineConfig({
   theme: {

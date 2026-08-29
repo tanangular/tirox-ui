@@ -1,5 +1,11 @@
 # @tirox-ui/preset
 
+## 0.1.1
+
+### Patch Changes
+
+- Fix Node ESM imports in the published preset build and generate complete declarations from the TypeScript sources.
+
 ## 0.1.0
 
 ### Patch Changes
