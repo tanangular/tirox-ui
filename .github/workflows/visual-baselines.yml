@@ -1,0 +1,33 @@
+name: Generate Visual Baselines
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linux-baselines:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 11.24.0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @tirox-ui/docs exec playwright install --with-deps chromium firefox webkit
+      - run: pnpm --filter @tirox-ui/docs exec playwright test tests/accessibility.spec.ts --project=chromium --project=firefox --project=webkit --update-snapshots
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: visual-baselines-linux
+          path: apps/docs/tests/accessibility.spec.ts-snapshots/*-linux.png
+          if-no-files-found: error
