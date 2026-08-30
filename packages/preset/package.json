@@ -52,9 +52,9 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@pandacss/dev": "^1.12.0"
+    "@pandacss/dev": "catalog:"
   },
   "devDependencies": {
-    "vitest": "^4.1.11"
+    "vitest": "catalog:"
   }
 }

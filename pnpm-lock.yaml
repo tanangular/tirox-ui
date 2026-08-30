@@ -4,6 +4,69 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@kobalte/core':
+      specifier: 0.13.13
+      version: 0.13.13
+    '@pandacss/dev':
+      specifier: ^1.12.0
+      version: 1.12.0
+    '@solidjs/diagnostics':
+      specifier: 2.0.0-rc.3
+      version: 2.0.0-rc.3
+    '@solidjs/meta':
+      specifier: 1.0.0-next.2
+      version: 1.0.0-next.2
+    '@solidjs/router':
+      specifier: 2.0.0-next.18
+      version: 2.0.0-next.18
+    '@solidjs/testing-library':
+      specifier: 1.0.0-beta.2
+      version: 1.0.0-beta.2
+    '@solidjs/vite-plugin':
+      specifier: 3.0.0-next.34
+      version: 3.0.0-next.34
+    '@solidjs/web':
+      specifier: 2.0.0-rc.3
+      version: 2.0.0-rc.3
+    '@types/node':
+      specifier: ^24.0.0
+      version: 24.13.3
+    '@zag-js/checkbox':
+      specifier: 1.43.3
+      version: 1.43.3
+    '@zag-js/dialog':
+      specifier: 1.43.3
+      version: 1.43.3
+    '@zag-js/solid':
+      specifier: 1.43.3
+      version: 1.43.3
+    astro:
+      specifier: ^7.2.9
+      version: 7.2.9
+    jsdom:
+      specifier: ^30.0.1
+      version: 30.0.1
+    oxfmt:
+      specifier: ^0.65.0
+      version: 0.65.0
+    oxlint:
+      specifier: ~1.79.0
+      version: 1.79.0
+    solid-js:
+      specifier: 2.0.0-rc.3
+      version: 2.0.0-rc.3
+    typescript:
+      specifier: ^7.0.2
+      version: 7.0.2
+    vite:
+      specifier: ^8.2.2
+      version: 8.2.2
+    vitest:
+      specifier: ^4.1.11
+      version: 4.1.11
+
 overrides:
   postcss: '>=8.5.18'
 
@@ -15,43 +78,43 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       '@solidjs/diagnostics':
-        specifier: 2.0.0-rc.3
+        specifier: 'catalog:'
         version: 2.0.0-rc.3(vitest@4.1.11(@types/node@24.13.3)(jsdom@30.0.1)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(yaml@2.9.0)))
       '@solidjs/meta':
-        specifier: 1.0.0-next.2
+        specifier: 'catalog:'
         version: 1.0.0-next.2(@solidjs/web@2.0.0-rc.3(solid-js@2.0.0-rc.3))(solid-js@2.0.0-rc.3)
       '@solidjs/router':
-        specifier: 2.0.0-next.18
+        specifier: 'catalog:'
         version: 2.0.0-next.18(@solidjs/web@2.0.0-rc.3(solid-js@2.0.0-rc.3))(solid-js@2.0.0-rc.3)
       '@solidjs/testing-library':
-        specifier: 1.0.0-beta.2
+        specifier: 'catalog:'
         version: 1.0.0-beta.2(@solidjs/web@2.0.0-rc.3(solid-js@2.0.0-rc.3))(solid-js@2.0.0-rc.3)
       '@solidjs/vite-plugin':
-        specifier: 3.0.0-next.34
+        specifier: 'catalog:'
         version: 3.0.0-next.34(@solidjs/web@2.0.0-rc.3(solid-js@2.0.0-rc.3))(solid-js@2.0.0-rc.3)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(yaml@2.9.0))
       '@solidjs/web':
-        specifier: 2.0.0-rc.3
+        specifier: 'catalog:'
         version: 2.0.0-rc.3(solid-js@2.0.0-rc.3)
       '@types/node':
-        specifier: ^24.0.0
+        specifier: 'catalog:'
         version: 24.13.3
       oxfmt:
-        specifier: ^0.65.0
+        specifier: 'catalog:'
         version: 0.65.0
       oxlint:
-        specifier: ~1.79.0
+        specifier: 'catalog:'
         version: 1.79.0
       solid-js:
-        specifier: 2.0.0-rc.3
+        specifier: 'catalog:'
         version: 2.0.0-rc.3
       typescript:
-        specifier: ^7.0.2
+        specifier: 'catalog:'
         version: 7.0.2
 
   apps/docs:
     dependencies:
       '@solidjs/web':
-        specifier: 2.0.0-rc.3
+        specifier: 'catalog:'
         version: 2.0.0-rc.3(solid-js@2.0.0-rc.3)
       '@tirox-ui/preset':
         specifier: workspace:*
@@ -60,13 +123,13 @@ importers:
         specifier: workspace:*
         version: link:../../packages/solid
       astro:
-        specifier: ^7.2.9
+        specifier: 'catalog:'
         version: 7.2.9(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@types/node@24.13.3)(yaml@2.9.0)
       cookie:
         specifier: 2.0.1
         version: 2.0.1
       solid-js:
-        specifier: 2.0.0-rc.3
+        specifier: 'catalog:'
         version: 2.0.0-rc.3
     devDependencies:
       '@astrojs/check':
@@ -75,6 +138,9 @@ importers:
       '@axe-core/playwright':
         specifier: ^4.13.0
         version: 4.13.0(playwright-core@1.62.1)
+      '@pandacss/dev':
+        specifier: 'catalog:'
+        version: 1.12.0(jsdom@30.0.1)(typescript@7.0.2)
       '@playwright/test':
         specifier: ^1.62.1
         version: 1.62.1
@@ -82,53 +148,53 @@ importers:
   packages/preset:
     dependencies:
       '@pandacss/dev':
-        specifier: ^1.12.0
+        specifier: 'catalog:'
         version: 1.12.0(jsdom@30.0.1)(typescript@7.0.2)
     devDependencies:
       vitest:
-        specifier: ^4.1.11
+        specifier: 'catalog:'
         version: 4.1.11(@types/node@24.13.3)(jsdom@30.0.1)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(yaml@2.9.0))
 
   packages/solid:
     devDependencies:
       '@kobalte/core':
-        specifier: 0.13.13
+        specifier: 'catalog:'
         version: 0.13.13(solid-js@2.0.0-rc.3)
       '@solidjs/diagnostics':
-        specifier: 2.0.0-rc.3
+        specifier: 'catalog:'
         version: 2.0.0-rc.3(vitest@4.1.11(@types/node@24.13.3)(jsdom@30.0.1)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(yaml@2.9.0)))
       '@solidjs/testing-library':
-        specifier: 1.0.0-beta.2
+        specifier: 'catalog:'
         version: 1.0.0-beta.2(@solidjs/web@2.0.0-rc.3(solid-js@2.0.0-rc.3))(solid-js@2.0.0-rc.3)
       '@solidjs/vite-plugin':
-        specifier: 3.0.0-next.34
+        specifier: 'catalog:'
         version: 3.0.0-next.34(@solidjs/web@2.0.0-rc.3(solid-js@2.0.0-rc.3))(solid-js@2.0.0-rc.3)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(yaml@2.9.0))
       '@solidjs/web':
-        specifier: 2.0.0-rc.3
+        specifier: 'catalog:'
         version: 2.0.0-rc.3(solid-js@2.0.0-rc.3)
       '@tirox-ui/preset':
         specifier: workspace:*
         version: link:../preset
       '@zag-js/checkbox':
-        specifier: 1.43.3
+        specifier: 'catalog:'
         version: 1.43.3
       '@zag-js/dialog':
-        specifier: 1.43.3
+        specifier: 'catalog:'
         version: 1.43.3
       '@zag-js/solid':
-        specifier: 1.43.3
+        specifier: 'catalog:'
         version: 1.43.3(solid-js@2.0.0-rc.3)
       jsdom:
-        specifier: ^30.0.1
+        specifier: 'catalog:'
         version: 30.0.1
       solid-js:
-        specifier: 2.0.0-rc.3
+        specifier: 'catalog:'
         version: 2.0.0-rc.3
       vite:
-        specifier: ^8.2.2
+        specifier: 'catalog:'
         version: 8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(yaml@2.9.0)
       vitest:
-        specifier: ^4.1.11
+        specifier: 'catalog:'
         version: 4.1.11(@types/node@24.13.3)(jsdom@30.0.1)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(yaml@2.9.0))
 
 packages:

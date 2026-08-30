@@ -3,23 +3,25 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "prepare:css": "panda codegen",
+    "dev": "pnpm prepare:css && astro dev",
+    "build": "pnpm prepare:css && astro build",
     "check": "tsc -p tsconfig.json --noEmit",
     "check:astro": "astro check",
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@solidjs/web": "2.0.0-rc.3",
+    "@solidjs/web": "catalog:",
     "@tirox-ui/preset": "workspace:*",
     "@tirox-ui/solid": "workspace:*",
-    "astro": "^7.2.9",
+    "astro": "catalog:",
     "cookie": "2.0.1",
-    "solid-js": "2.0.0-rc.3"
+    "solid-js": "catalog:"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@axe-core/playwright": "^4.13.0",
+    "@pandacss/dev": "catalog:",
     "@playwright/test": "^1.62.1"
   }
 }

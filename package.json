@@ -29,17 +29,17 @@
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.1",
-    "@solidjs/diagnostics": "2.0.0-rc.3",
-    "@solidjs/meta": "1.0.0-next.2",
-    "@solidjs/router": "2.0.0-next.18",
-    "@solidjs/testing-library": "1.0.0-beta.2",
-    "@solidjs/vite-plugin": "3.0.0-next.34",
-    "@solidjs/web": "2.0.0-rc.3",
-    "@types/node": "^24.0.0",
-    "oxfmt": "^0.65.0",
-    "oxlint": "~1.79.0",
-    "solid-js": "2.0.0-rc.3",
-    "typescript": "^7.0.2"
+    "@solidjs/diagnostics": "catalog:",
+    "@solidjs/meta": "catalog:",
+    "@solidjs/router": "catalog:",
+    "@solidjs/testing-library": "catalog:",
+    "@solidjs/vite-plugin": "catalog:",
+    "@solidjs/web": "catalog:",
+    "@types/node": "catalog:",
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
+    "solid-js": "catalog:",
+    "typescript": "catalog:"
   },
   "engines": {
     "node": ">=22.0.0"

@@ -1,6 +1,30 @@
 packages:
   - packages/*
   - apps/*
+catalog:
+  '@kobalte/core': 0.13.13
+  '@pandacss/dev': ^1.12.0
+  '@solidjs/diagnostics': 2.0.0-rc.3
+  '@solidjs/meta': 1.0.0-next.2
+  '@solidjs/router': 2.0.0-next.18
+  '@solidjs/testing-library': 1.0.0-beta.2
+  '@solidjs/vite-plugin': 3.0.0-next.34
+  '@solidjs/web': 2.0.0-rc.3
+  '@types/node': ^24.0.0
+  '@zag-js/checkbox': 1.43.3
+  '@zag-js/dialog': 1.43.3
+  '@zag-js/solid': 1.43.3
+  astro: ^7.2.9
+  jsdom: ^30.0.1
+  oxfmt: ^0.65.0
+  oxlint: ~1.79.0
+  solid-js: 2.0.0-rc.3
+  typescript: ^7.0.2
+  vite: ^8.2.2
+  vitest: ^4.1.11
+catalogs:
+  solid-peer:
+    solid-js: '>=2.0.0-rc.3 <3'
 allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:

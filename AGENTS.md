@@ -10,7 +10,7 @@ Tirox UI is a package-first, open-source UI system. The v1 foundation targets So
 - `@tirox-ui/svelte` is experimental only after Solid foundation acceptance; it uses an Ark UI Svelte adapter and the same preset contract.
 - Renderer extensions (`motion`, `svg`, `canvas`) remain separate packages and must not leak renderer assumptions into core.
 
-Use pnpm workspaces and the committed lockfile. Package versions are independent; compatibility policy and release notes are shared.
+Use pnpm workspaces, pnpm Catalogs, and the committed lockfile. `pnpm-workspace.yaml` is the single source of truth for shared dependency versions and ranges; manifests must use `catalog:` (or a named catalog) instead of duplicating those values. Internal packages continue to use `workspace:*`. Package own versions remain independent and are managed by Changesets; compatibility policy and release notes are shared.
 
 ## Architecture and API
 

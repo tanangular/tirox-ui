@@ -4,6 +4,7 @@ This is the compact current glossary. ADRs under `docs/adr` are historical recor
 
 - **Tirox UI** — the framework-neutral design-system project with Solid foundation components and future renderer adapters.
 - **Package-first** — publish independently consumable packages with explicit exports and open-source recipes.
+- **pnpm Catalog** — the dependency version contract declared in `pnpm-workspace.yaml`; workspace manifests reference it with `catalog:` or a named catalog instead of duplicating versions. It does not control a package's own release version.
 - **Semantic compatibility** — preserve component concepts, props, states, anatomy, and composition patterns without promising React/runtime identity.
 - **Design foundations** — Radix UI guides semantic API and composition; Ark UI is the intended behavior foundation; Park UI and Panda CSS guide recipes, tokens, slots, and theming. These are layered references, not a promise of Radix React runtime compatibility or direct Park UI implementation reuse.
 - **Behavior adapter** — thin framework adapter over Ark UI; owns interaction semantics, ARIA, keyboard, and state transitions.

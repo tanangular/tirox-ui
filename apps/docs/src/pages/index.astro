@@ -17,7 +17,7 @@ const themeCssVariables = createThemeCssVariables();
       <h1>Tirox UI</h1>
       <p>Solid-native, accessible components with a replaceable Panda token contract.</p>
       <p><a href="/components">Read the foundation behavior guidance</a></p>
-      <button data-scope="button" data-part="root" data-variant="solid" data-size="md">Get started</button>
+      <div data-button-demo aria-label="Interactive Button demo"></div>
       <h2>Button</h2>
       <p>Contract: native button props, typed <code>variant</code>/<code>size</code>, loading state, and stable semantic attributes.</p>
       <pre><code>{`import { Button } from '@tirox-ui/solid';\n\n&lt;Button variant="solid" size="md"&gt;Get started&lt;/Button&gt;`}</code></pre>
@@ -49,6 +49,7 @@ const themeCssVariables = createThemeCssVariables();
       <pre>{JSON.stringify(apiMetadata, null, 2)}</pre>
     </main>
     <script src="/theme-playground.js" is:inline></script>
+    <script src="../scripts/button-demo.tsx"></script>
   </body>
   <style>
     :global(html) { color-scheme: light; }

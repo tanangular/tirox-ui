@@ -52,21 +52,21 @@
     "test": "vitest run --config vitest.config.ts && vitest run --config vitest.ssr.config.ts"
   },
   "devDependencies": {
-    "@kobalte/core": "0.13.13",
-    "@solidjs/diagnostics": "2.0.0-rc.3",
-    "@solidjs/testing-library": "1.0.0-beta.2",
-    "@solidjs/vite-plugin": "3.0.0-next.34",
-    "@solidjs/web": "2.0.0-rc.3",
-    "@tirox-ui/preset": "workspace:*",
-    "@zag-js/checkbox": "1.43.3",
-    "@zag-js/dialog": "1.43.3",
-    "@zag-js/solid": "1.43.3",
-    "jsdom": "^30.0.1",
-    "solid-js": "2.0.0-rc.3",
-    "vite": "^8.2.2",
-    "vitest": "^4.1.11"
+    "@kobalte/core": "catalog:",
+    "@solidjs/diagnostics": "catalog:",
+    "@solidjs/testing-library": "catalog:",
+    "@solidjs/vite-plugin": "catalog:",
+    "@solidjs/web": "catalog:",
+    "@tirox-ui/preset": "workspace:^",
+    "@zag-js/checkbox": "catalog:",
+    "@zag-js/dialog": "catalog:",
+    "@zag-js/solid": "catalog:",
+    "jsdom": "catalog:",
+    "solid-js": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
   },
   "peerDependencies": {
-    "solid-js": ">=2.0.0-rc.3 <3"
+    "solid-js": "catalog:solid-peer"
   }
 }
